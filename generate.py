@@ -3,6 +3,9 @@
 import mysql.connector as db
 import json
 import sys
+import requests
+import zipfile
+import os
 from collections import OrderedDict
 try:
     from local_settings import *
@@ -11,7 +14,7 @@ except ImportError:
 
 """
 JSON to MySql-database of all current MTG cards
-JSON file should be obtained from http://mtgjson.com/
+JSON file gets automatically obtained from http://mtgjson.com/
 """
 
 """Return sql compatible string"""
@@ -38,6 +41,7 @@ def create_structure(db_cursor, sql_file):
     for line in file:
         if line.strip() != "" and line[:2] != "--":
             parsed_sql += line.replace('\n', ' ')
+    file.close()
     sql_queries = parsed_sql.split(";")
     for query in sql_queries:
         db_cursor.execute(query)
@@ -96,6 +100,10 @@ def parse_json(db_cursor, json_file):
         if check_key_length(current_card, "colorIdentity") > 0:
             for current_identity in current_card["colorIdentity"]:
                 queries.append("INSERT INTO `cards_coloridentity`(`identity`, `name`) VALUES (%s,%s)" % (build_sql_string(current_identity), name))
+        # Insert into 'cards_legalities' table
+        if check_key_length(current_card, "legalities") > 0:
+            for current_legality in current_card["legalities"]:
+                queries.append("INSERT INTO `cards_legalities`(`format`, `name`, `legality`) VALUES (%s,%s,%s)" % (build_sql_string(current_legality["format"]), name, build_sql_string(current_legality["legality"])))
         for query in queries:
             try:
                 db_cursor.execute(query)
@@ -137,9 +145,34 @@ def main():
             db_connection.close()
             exit()
 
+    # Download cards.json
+    if not USE_LOCAL_JSON:
+        print("Downloading JSON zip file from \"%s\"... " % JSON_URL, end='')
+        remote_file = requests.get(JSON_URL)
+        local_file = open("tmp.zip", "wb")
+        local_file.write(remote_file.content)
+        local_file.close()
+        # Extract file
+        if os.path.exists("AllCards-x.json"):
+            os.remove("AllCards-x.json")
+        zip_file = zipfile.ZipFile("tmp.zip", "r")
+        zip_file.extractall()
+        zip_file.close()
+        # Rename extracted file
+        if os.path.exists(JSON_FILE):
+            os.remove(JSON_FILE)
+        os.rename("AllCards-x.json", JSON_FILE)
+        # Clean up
+        os.remove("tmp.zip")
+        print("done")
+
     # Parse and insert all card records
-    parse_json(db_cursor, JSON_CARDS)
+    parse_json(db_cursor, JSON_FILE)
     print("\nAll done!")
+
+    # Remove JSON file
+    if not USE_LOCAL_JSON:
+        os.remove(JSON_FILE)
 
     # Close db connection
     db_connection.close()

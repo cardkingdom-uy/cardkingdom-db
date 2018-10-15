@@ -1,0 +1,6 @@
+DB_HOST = "localhost"
+DB_NAME = "cardkingdom"
+DB_USER = "cardkingdom"
+DB_PASS = "cardkingdom"
+DB_EXPORT = "cardkingdom.sql"
+JSON_CARDS = "cards.json"

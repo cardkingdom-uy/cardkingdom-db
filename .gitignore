@@ -1,0 +1,5 @@
+# Settings file
+local_settings.py
+
+# Cache
+__pycache__

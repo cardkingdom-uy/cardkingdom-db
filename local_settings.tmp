@@ -3,4 +3,6 @@ DB_NAME = "cardkingdom"
 DB_USER = "cardkingdom"
 DB_PASS = "cardkingdom"
 DB_EXPORT = "cardkingdom.sql"
-JSON_CARDS = "cards.json"
+USE_LOCAL_JSON = False
+JSON_URL = "http://mtgjson.com/json/AllCards-x.json.zip"
+JSON_FILE = "cards.json"

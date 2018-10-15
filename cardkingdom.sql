@@ -57,6 +57,18 @@ CREATE TABLE `cards_colors` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cards_legalities`
+--
+
+CREATE TABLE `cards_legalities` (
+  `format` varchar(160) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(160) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `legality` varchar(160) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cards_printings`
 --
 
@@ -121,6 +133,12 @@ ALTER TABLE `cards_coloridentity`
 --
 ALTER TABLE `cards_colors`
   ADD PRIMARY KEY (`color`,`name`);
+
+--
+-- Indexes for table `cards_legalities`
+--
+ALTER TABLE `cards_legalities`
+  ADD PRIMARY KEY (`format`,`name`);
 
 --
 -- Indexes for table `cards_printings`

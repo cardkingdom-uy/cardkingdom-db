@@ -3,3 +3,9 @@ local_settings.py
 
 # Cache
 __pycache__
+
+# JSON files
+*.json
+
+# tmp.zip
+tmp.zip

@@ -102,8 +102,8 @@ def parse_json(db_cursor, json_file):
                 queries.append("INSERT INTO `cards_coloridentity`(`identity`, `name`) VALUES (%s,%s)" % (build_sql_string(current_identity), name))
         # Insert into 'cards_legalities' table
         if check_key_length(current_card, "legalities") > 0:
-            for current_ruling in current_card["legalities"]:
-                queries.append("INSERT INTO `cards_legalities`(`format`, `name`, `legality`) VALUES (%s,%s,%s)" % (build_sql_string(current_ruling["format"]), name, build_sql_string(current_ruling["legality"])))
+            for current_legality in current_card["legalities"]:
+                queries.append("INSERT INTO `cards_legalities`(`format`, `name`, `legality`) VALUES (%s,%s,%s)" % (build_sql_string(current_legality["format"]), name, build_sql_string(current_legality["legality"])))
         for query in queries:
             try:
                 db_cursor.execute(query)

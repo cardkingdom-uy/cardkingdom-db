@@ -1,8 +1,11 @@
+# General config.
 DB_HOST = "localhost"
 DB_NAME = "cardkingdom"
 DB_USER = "cardkingdom"
 DB_PASS = "cardkingdom"
 DB_EXPORT = "cardkingdom.sql"
+
+# generate.pl
 USE_LOCAL_JSON = False
-JSON_URL = "http://mtgjson.com/json/AllCards-x.json.zip"
-JSON_FILE = "cards.json"
+JSON_URL = "https://mtgjson.com/v4/json/AllSets.json.zip"
+JSON_FILE = "AllSets.json"

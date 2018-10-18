@@ -21,6 +21,7 @@ Latest _export.sql_ file can be downloaded [here](http://cattaneo.uy/private/exp
 * Go take a cup of coffee!
 ### Misc
 Set's cards count: 44141
+
 All row's count: 1182933
 
 ## update_prices.py

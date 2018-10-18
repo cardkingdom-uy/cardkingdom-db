@@ -7,7 +7,7 @@ Latest _export.sql_ file can be downloaded [here](http://cattaneo.uy/private/exp
 ## generate.py
 "JSON to MySql-database" python3 script for all current MTG cards. This is possible thanks to http://mtgjson.com/ (v4)
 
-![Image of cardkingdom-db script](http://cattaneo.uy/private/cardkingdom-db.png)
+![Image of cardkingdom-db script](http://cattaneo.uy/private/cardkingdom-db-v2.png)
 
 ### Installation and running
 #### Requirements

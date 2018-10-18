@@ -261,100 +261,144 @@ CREATE TABLE `tokens_reverserelated` (
 -- Indexes for table `cards_coloridentity`
 --
 ALTER TABLE `cards_coloridentity`
-  ADD PRIMARY KEY (`identity`,`uuid`);
+  ADD PRIMARY KEY (`identity`,`uuid`),
+  ADD KEY `identity` (`identity`),
+  ADD KEY `uuid` (`uuid`);
 
 --
 -- Indexes for table `cards_colors`
 --
 ALTER TABLE `cards_colors`
-  ADD PRIMARY KEY (`color`,`uuid`);
+  ADD PRIMARY KEY (`color`,`uuid`),
+  ADD KEY `color` (`color`),
+  ADD KEY `uuid` (`uuid`);
 
 --
 -- Indexes for table `cards_foreigndata`
 --
 ALTER TABLE `cards_foreigndata`
-  ADD PRIMARY KEY (`foreigndata`,`uuid`);
+  ADD PRIMARY KEY (`foreigndata`,`uuid`),
+  ADD KEY `foreigndata` (`foreigndata`),
+  ADD KEY `uuid` (`uuid`);
 
 --
 -- Indexes for table `cards_legalities`
 --
 ALTER TABLE `cards_legalities`
-  ADD PRIMARY KEY (`format`,`uuid`);
+  ADD PRIMARY KEY (`format`,`uuid`),
+  ADD KEY `format` (`format`),
+  ADD KEY `uuid` (`uuid`);
 
 --
 -- Indexes for table `cards_names`
 --
 ALTER TABLE `cards_names`
-  ADD PRIMARY KEY (`nameId`,`uuid`);
+  ADD PRIMARY KEY (`nameId`,`uuid`),
+  ADD KEY `nameId` (`nameId`),
+  ADD KEY `uuid` (`uuid`),
+  ADD KEY `name` (`name`);
 
 --
 -- Indexes for table `cards_prices`
 --
 ALTER TABLE `cards_prices`
-  ADD PRIMARY KEY (`source`,`uuid`,`date`,`line`);
+  ADD PRIMARY KEY (`source`,`uuid`,`date`,`line`),
+  ADD KEY `source` (`source`),
+  ADD KEY `uuid` (`uuid`);
 
 --
 -- Indexes for table `cards_printings`
 --
 ALTER TABLE `cards_printings`
-  ADD PRIMARY KEY (`printing`,`uuid`);
+  ADD PRIMARY KEY (`printing`,`uuid`),
+  ADD KEY `printing` (`printing`),
+  ADD KEY `uuid` (`uuid`);
 
 --
 -- Indexes for table `cards_rulings`
 --
 ALTER TABLE `cards_rulings`
-  ADD PRIMARY KEY (`ruling`,`uuid`);
+  ADD PRIMARY KEY (`ruling`,`uuid`),
+  ADD KEY `ruling` (`ruling`),
+  ADD KEY `uuid` (`uuid`);
 
 --
 -- Indexes for table `cards_subtypes`
 --
 ALTER TABLE `cards_subtypes`
-  ADD PRIMARY KEY (`subtype`,`uuid`);
+  ADD PRIMARY KEY (`subtype`,`uuid`),
+  ADD KEY `subtype` (`subtype`),
+  ADD KEY `uuid` (`uuid`);
 
 --
 -- Indexes for table `cards_supertypes`
 --
 ALTER TABLE `cards_supertypes`
-  ADD PRIMARY KEY (`supertype`,`uuid`);
+  ADD PRIMARY KEY (`supertype`,`uuid`),
+  ADD KEY `supertype` (`supertype`),
+  ADD KEY `uuid` (`uuid`);
 
 --
 -- Indexes for table `cards_types`
 --
 ALTER TABLE `cards_types`
-  ADD PRIMARY KEY (`type`,`uuid`);
+  ADD PRIMARY KEY (`type`,`uuid`),
+  ADD KEY `type` (`type`),
+  ADD KEY `uuid` (`uuid`);
 
 --
 -- Indexes for table `sets`
 --
 ALTER TABLE `sets`
-  ADD PRIMARY KEY (`setId`);
+  ADD PRIMARY KEY (`setId`),
+  ADD KEY `setId` (`setId`),
+  ADD KEY `name` (`name`);
 
 --
 -- Indexes for table `sets_cards`
 --
 ALTER TABLE `sets_cards`
-  ADD PRIMARY KEY (`setId`,`uuid`);
+  ADD PRIMARY KEY (`setId`,`uuid`),
+  ADD KEY `setId` (`setId`),
+  ADD KEY `uuid` (`uuid`),
+  ADD KEY `name` (`name`),
+  ADD KEY `type` (`type`),
+  ADD KEY `multiverseId` (`multiverseId`);
 
 --
 -- Indexes for table `sets_tokens`
 --
 ALTER TABLE `sets_tokens`
-  ADD PRIMARY KEY (`setId`,`uuid`);
+  ADD PRIMARY KEY (`setId`,`uuid`),
+  ADD KEY `setId` (`setId`),
+  ADD KEY `uuid` (`uuid`),
+  ADD KEY `name` (`name`);
 
 --
 -- Indexes for table `tokens_coloridentity`
 --
 ALTER TABLE `tokens_coloridentity`
-  ADD PRIMARY KEY (`identity`,`uuid`);
+  ADD PRIMARY KEY (`identity`,`uuid`),
+  ADD KEY `identity` (`identity`),
+  ADD KEY `uuid` (`uuid`);
 
 --
 -- Indexes for table `tokens_colors`
 --
 ALTER TABLE `tokens_colors`
-  ADD PRIMARY KEY (`color`,`uuid`);
+  ADD PRIMARY KEY (`color`,`uuid`),
+  ADD KEY `color` (`color`),
+  ADD KEY `uuid` (`uuid`);
 
 --
 -- Indexes for table `tokens_reverserelated`
 --
 ALTER TABLE `tokens_reverserelated`
-  ADD PRIMARY KEY (`reverseId`,`uuid`);
+  ADD PRIMARY KEY (`reverseId`,`uuid`),
+  ADD KEY `reverseId` (`reverseId`),
+  ADD KEY `uuid` (`uuid`),
+  ADD KEY `name` (`name`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -20,15 +20,14 @@ Latest _export.sql_ file can be downloaded [here](http://cattaneo.uy/private/exp
 * Run _generate.py_: `./generate.py` or `python generate.py`
 * Go take a cup of coffee!
 ### Misc
-Set's cards count: 44141
-
-All row's count: 1182933
+* Set's cards count: 44141
+* All row's count: 1182933
 
 ## update_prices.py
 This script updates all cards prices
 
 Currently supported websites:
-* TODO (CK will be the first one)
+* cardkingdom.com
 
 ### Installation and running
 #### Requirements
@@ -37,3 +36,6 @@ Currently supported websites:
 * Modify _local_settings.tmp_ to suit your needs and rename it to _local_settings.py_
 * Run _update_prices.py_: `./update_prices.py` or `python update_prices.py`
 * Go take a cup of coffee!
+
+## License
+GNU GPL v3

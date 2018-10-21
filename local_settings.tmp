@@ -4,8 +4,16 @@ DB_NAME = "cardkingdom"
 DB_USER = "cardkingdom"
 DB_PASS = "cardkingdom"
 DB_EXPORT = "cardkingdom.sql"
+DB_EXTRA = "extra.sql"
 
 # generate.pl
 USE_LOCAL_JSON = False
 JSON_URL = "https://mtgjson.com/v4/json/AllSets.json.zip"
 JSON_FILE = "AllSets.json"
+
+# Proxy config.
+USE_PROXY = False
+PROXY_LIST = []
+
+# Misc
+MAX_DELAY = 1024

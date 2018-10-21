@@ -83,9 +83,12 @@ CREATE TABLE `cards_names` (
 CREATE TABLE `cards_prices` (
   `source` varchar(160) COLLATE utf8mb4_unicode_ci NOT NULL,
   `uuid` varchar(160) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date` date NOT NULL,
-  `line` int(10) NOT NULL,
-  `price` decimal(15,8) NOT NULL
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `nm_price` decimal(15,8) NOT NULL,
+  `ex_price` decimal(15,8) NOT NULL,
+  `vg_price` decimal(15,8) NOT NULL,
+  `g_price` decimal(15,8) NOT NULL,
+  `url` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -201,6 +204,18 @@ CREATE TABLE `sets_cards` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sets_equiv`
+--
+
+CREATE TABLE `sets_equiv` (
+  `setId` varchar(160) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `source` varchar(160) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `equiv` varchar(160) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sets_tokens`
 --
 
@@ -302,9 +317,12 @@ ALTER TABLE `cards_names`
 -- Indexes for table `cards_prices`
 --
 ALTER TABLE `cards_prices`
-  ADD PRIMARY KEY (`source`,`uuid`,`date`,`line`),
+  ADD PRIMARY KEY (`source`,`uuid`,`date`),
   ADD KEY `source` (`source`),
-  ADD KEY `uuid` (`uuid`);
+  ADD KEY `uuid` (`uuid`),
+  ADD KEY `date` (`date`),
+  ADD KEY `uuid_2` (`uuid`,`date`),
+  ADD KEY `source_2` (`source`,`uuid`,`date`);
 
 --
 -- Indexes for table `cards_printings`
@@ -364,6 +382,14 @@ ALTER TABLE `sets_cards`
   ADD KEY `name` (`name`),
   ADD KEY `type` (`type`),
   ADD KEY `multiverseId` (`multiverseId`);
+
+--
+-- Indexes for table `sets_equiv`
+--
+ALTER TABLE `sets_equiv`
+  ADD PRIMARY KEY (`setId`,`source`),
+  ADD KEY `setId` (`setId`),
+  ADD KEY `source` (`source`);
 
 --
 -- Indexes for table `sets_tokens`

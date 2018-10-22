@@ -56,7 +56,7 @@ def update_ck_prices(db_cursor, offset):
         #print("Card: %s %s" % (set_id, card_uuid))
 
         # Fetch current card last prices
-        db_cursor.execute("SELECT nm_price, ex_price, vg_price, g_price FROM cards_prices WHERE uuid = '%s' and source = 'cardkingdom.com' ORDER BY source, uuid, date LIMIT 1" % card_uuid)
+        db_cursor.execute("SELECT nm_price, ex_price, vg_price, g_price FROM cards_prices WHERE uuid = '%s' and source = 'cardkingdom.com' ORDER BY source ASC, uuid ASC, date DESC LIMIT 1" % card_uuid)
         prices_result = db_cursor.fetchall()
 
         # Default zero prices
@@ -101,6 +101,7 @@ def update_ck_prices(db_cursor, offset):
                     except Exception as ex:
                         # Delete non-working proxy
                         del PROXY_LIST[current_proxy]
+                        current_proxy = 0
                         # Switch back to regular request in case we run out of proxies
                         if len(PROXY_LIST) == 0:
                             search_result = requests.get(ck_url)

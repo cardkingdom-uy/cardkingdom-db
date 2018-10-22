@@ -341,14 +341,30 @@ def main():
     try:
         create_structure(db_cursor, DB_EXPORT)
         print("done")
-    except Exception as e:
-        print("error: %s" % e)
+    except Exception as ex:
+        print("error: %s" % ex)
         response = input("Continue anyway? [Y/N] ")
         if response.strip().upper() != 'Y':
             db_connection.close()
             exit()
 
-    # Download cards.json
+    # Insert extra data
+    print("Inserting extra data using \"%s\"... " % DB_EXTRA, end='')
+    try:
+        create_structure(db_cursor, DB_EXTRA)
+        print("done")
+        response = input("Process MTGJSON now? [Y/N] ")
+        if response.strip().upper() != 'Y':
+            db_connection.close()
+            exit()
+    except Exception as ez:
+        print("error: %s" % ez)
+        response = input("Continue anyway? [Y/N] ")
+        if response.strip().upper() != 'Y':
+            db_connection.close()
+            exit()
+
+    # Download AllSets.json
     if not USE_LOCAL_JSON:
         print("Downloading JSON zip file from \"%s\"... " % JSON_URL, end='')
         remote_file = requests.get(JSON_URL)

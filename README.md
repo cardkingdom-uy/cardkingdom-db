@@ -2,12 +2,12 @@
 
 Main goal of these scripts is to maintain an up-to-date MTG cards database, including their market prices. We'll also try to keep an already generated and up-to-date _export.sql_ file (includes the database structure and all it's processed records ready to insert)
 
-Current _export.sql_ file can be downloaded [here](http://cattaneo.uy/private/export.sql)
+Latest _export.sql_ file can be downloaded [here](http://cattaneo.uy/private/export.sql.zip)
 
 ## generate.py
 "JSON to MySql-database" python3 script for all current MTG cards. This is possible thanks to http://mtgjson.com/ (v4)
 
-![Image of cardkingdom-db script](http://cattaneo.uy/private/cardkingdom-db.png)
+![Image of cardkingdom-db script](http://cattaneo.uy/private/cardkingdom-db-v2.png)
 
 ### Installation and running
 #### Requirements
@@ -20,13 +20,14 @@ Current _export.sql_ file can be downloaded [here](http://cattaneo.uy/private/ex
 * Run _generate.py_: `./generate.py` or `python generate.py`
 * Go take a cup of coffee!
 ### Misc
-Cards count: 19032
+* Set's cards count: 44141
+* All row's count: 1182933
 
 ## update_prices.py
 This script updates all cards prices
 
 Currently supported websites:
-* TODO (CK will be the first one)
+* cardkingdom.com
 
 ### Installation and running
 #### Requirements
@@ -35,3 +36,6 @@ Currently supported websites:
 * Modify _local_settings.tmp_ to suit your needs and rename it to _local_settings.py_
 * Run _update_prices.py_: `./update_prices.py` or `python update_prices.py`
 * Go take a cup of coffee!
+
+## License
+GNU GPL v3
